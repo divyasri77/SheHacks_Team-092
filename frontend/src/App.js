@@ -18,10 +18,15 @@ import UserEditScreen from './screens/UserEditScreen'
 import ProductListScreen from './screens/ProductListScreen'
 import ProductEditScreen from './screens/ProductEditScreen'
 import OrderListScreen from './screens/OrderListScreen'
+import circle from './assets/circle.svg'
+import circle1 from './assets/circle1.svg'
+
 
 const App = () => {
   return (
     <Router>
+       <img src={circle1} style={{position:"fixed", marginTop: '-15px'}}/>
+      
       <Header />
       <main className='py-3'>
         <>
@@ -58,6 +63,7 @@ const App = () => {
           />
           <Route path='/' component={HomeScreen} exact />
         </>
+        <img src={circle} style={{align:"bottom",marginTop: "70%",position: "fixed" }}></img>
       </main>
       <Footer />
     </Router>

@@ -10,6 +10,9 @@ import Paginate from '../components/Paginate'
 import ProductCarousel from '../components/ProductCarousel'
 import Meta from '../components/Meta'
 import { listProducts } from '../actions/productActions'
+import front from '../assets/front.svg';
+import book from '../assets/book.svg';
+import online from '../assets/online-course.svg'
 
 const HomeScreen = ({ match }) => {
   const keyword = match.params.keyword
@@ -27,25 +30,35 @@ const HomeScreen = ({ match }) => {
 
   return (
     <motion.div initial= {{opacity:0, scale: 0.6 }} animate={{opacity:1, scale: 1}} transition= {{duration: 0.6}}>
+     
       <Meta />
-      {!keyword ? (
-        <ProductCarousel />
-      ) : (
-        <Link to='/' className='btn btn-light'>
-          Go Back
-        </Link>
-      )}
+      
       <motion.div initial={{opacity:0,y:90}} animate={{opacity:1,y:0}} transition={{delay:0.6, duration:0.6,type: "spring", damping: 16, stiffness: 200,}} className="container-fluid m-0 p-4">
-        <h1>Latest courses</h1>
         {loading ? (
           <Loader />
         ) : error ? (
           <Message variant='danger'>{error}</Message>
         ) : (
           <>
+          <div className="row">
+          <div className="col">
+            <h1 style= {{fontFamily: 'Akaya Telivigala ,cursive',display: 'flex', alignItems:'center',margin: 'auto',height: '500px',width: '500px'}}>
+              Learn with more intractivity, and have in person experience <br/>
+                and bring the inovation at your finger tip!
+                <br/>
+                <img src={online} style={{width: "50px",height:"50px"}}></img>
+            </h1>
+          </div>
+            <div className="col">
+           <img src={front} style={{display: "flex",alignItems: 'right', margin: 'auto', height: '550px', width: "550px"}}/>
+           </div>
+           </div>
+           <h1>Courses
+           <img src={book} style={{width: "50px",height:"50px"}}></img>
+           </h1>
             <Row>
               {products.map((product) => (
-                <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
+                <Col key={product._id} sm={12} md={6} lg={3} xl={3}>
                   <Product product={product} />
                 </Col>
               ))}
@@ -55,6 +68,7 @@ const HomeScreen = ({ match }) => {
               page={page}
               keyword={keyword ? keyword : ''}
             />
+           
           </>
         )}
       </motion.div>

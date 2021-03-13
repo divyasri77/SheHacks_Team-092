@@ -19,17 +19,17 @@ const Header = () => {
 
   return (
     <header>
-      <Navbar bg='dark' variant='dark' expand='lg' collapseOnSelect>
-        <div className="container-fluid navdiv">
+      <Navbar bg='dark' variant='dark' expand='lg' collapseOnSelect className="Navbar">
+        <div className="container-fluid navdiv" >
           <LinkContainer to='/'>
-            <Navbar.Brand>Uplift</Navbar.Brand>
+            <Navbar.Brand style={{color: 'black'}}>Uplift</Navbar.Brand>
           </LinkContainer>
           <Navbar.Toggle aria-controls='basic-navbar-nav' />
           <Navbar.Collapse id='basic-navbar-nav'>
             <Route render={({ history }) => <SearchBox  history={history} />} />
             <Nav className='ml-auto'>
               <LinkContainer className="mx-2" to='/video'>
-                    <Nav.Link><i className='fas fa-video'></i> Video recording</Nav.Link>
+                    <Nav.Link style={{color: 'black'}}><i className='fas fa-video'></i> Video recording</Nav.Link>
               </LinkContainer>
               <LinkContainer className="mx-2" to='/cart'>
                 <Nav.Link>
